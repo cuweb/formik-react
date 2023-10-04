@@ -1,11 +1,13 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import { Formik, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { FieldWrapper } from "./components/FieldWrapper/FieldWrapper";
 import { Input } from "./components/Input/Input";
 import { FieldGroup } from "./components/FieldGroup/FieldGroup";
 import { CheckRadio } from "./components/CheckRadio/CheckRadio";
-import { checkRadioData } from "./data/data";
+import { Select } from "./components/Select/Select";
+import { checkRadioData, selectData } from "./data/data";
+import { TextArea } from "./components/TextArea/TextArea";
 
 type FormValuesType = {
   textInput: string;
@@ -25,7 +27,7 @@ const MyForm = () => {
     passwordInput: "",
     numberInput: 0,
     checkboxInput: false,
-    radioInput: "option1",
+    radioInput: "Lorem ipsum",
     selectInput: "",
     textArea: "",
   };
@@ -121,6 +123,12 @@ const MyForm = () => {
             />
           </FieldWrapper>
 
+          {/* Text Area */}
+          <FieldWrapper>
+            <TextArea id="textAreaExample" label="TextArea Example" />
+            <ErrorMessage name="textArea" component="div" />
+          </FieldWrapper>
+
           {/* Checkbox */}
           <FieldWrapper>
             <CheckRadio type="checkbox" value="Testing checkbox" />
@@ -128,46 +136,33 @@ const MyForm = () => {
           </FieldWrapper>
 
           {/* Checkboxes */}
-          {/* <FieldWrapper>
-            <FieldGroup legend="Checkbox Legend">
-              {checkRadioData.map((value, index) => (
-                <CheckRadio key={index} type="checkbox" value={value} />
+          <FieldWrapper>
+            <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+              {checkRadioData.map((item, index) => (
+                <CheckRadio key={index} type="checkbox" value={item.value} />
               ))}
               <ErrorMessage name="checkboxInput" component="div" />
             </FieldGroup>
-          </FieldWrapper> */}
+          </FieldWrapper>
 
           {/* Radio Buttons */}
           <FieldWrapper>
-            <FieldGroup>
-              <label>
-                <Field type="radio" name="radioInput" value="option1" />
-                Option 1
-              </label>
-              <label>
-                <Field type="radio" name="radioInput" value="option2" />
-                Option 2
-              </label>
+            <FieldGroup id="radio-group-example" legend="Radio Legend">
+              {checkRadioData.map((item, index) => (
+                <CheckRadio key={index} type="radio" value={item.value} />
+              ))}
               <ErrorMessage name="radioInput" component="div" />
             </FieldGroup>
           </FieldWrapper>
 
           {/* Select */}
           <FieldWrapper>
-            <label htmlFor="selectInput">Select Input</label>
-            <Field as="select" id="selectInput" name="selectInput">
-              <option value="">Select an option</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-            </Field>
+            <Select
+              id="selectExample"
+              label="Select Example"
+              options={selectData}
+            />
             <ErrorMessage name="selectInput" component="div" />
-          </FieldWrapper>
-
-          {/* Text Area */}
-          <FieldWrapper>
-            <label htmlFor="textArea">Text Area</label>
-            <Field as="textarea" id="textArea" name="textArea" />
-            <ErrorMessage name="textArea" component="div" />
           </FieldWrapper>
 
           {/* Submit Button */}

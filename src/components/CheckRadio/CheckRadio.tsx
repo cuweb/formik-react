@@ -6,14 +6,12 @@ export interface CheckRadioProps {
 }
 
 export const CheckRadio = ({ type, value }: CheckRadioProps) => {
+  const name = type === "checkbox" ? "checkboxInput" : "radioInput";
+
   return (
     <>
       <label>
-        <Field
-          type={type}
-          name={type === "checkbox" ? "checked" : "picked"}
-          value={value}
-        />
+        <Field type={type} name={name} value={value} />
         {value}
       </label>
     </>
