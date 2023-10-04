@@ -4,6 +4,7 @@ export const labelStyles = {
 
 export const fieldStyles = {
   input: `border border-slate-300 rounded-md p-2`,
+  select: "border border-slate-300 rounded-md p-",
   errorInput: "border border-red-600 rounded-md p-2",
 };
 

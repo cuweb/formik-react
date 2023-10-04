@@ -10,12 +10,14 @@ export interface InputProps {
   label?: string;
   type: "text" | "email" | "number" | "password";
   name: string;
+  required?: boolean;
 }
 
 export const Input = ({
   label,
   type,
   name,
+  required,
   ...props
 }: InputProps &
   InputHTMLAttributes<HTMLInputElement> &
@@ -27,7 +29,7 @@ export const Input = ({
     <div>
       {label && (
         <label htmlFor={name} className={labelStyles.label}>
-          {label}
+          {label} {required && <span className="text-red-700">*</span>}
         </label>
       )}
       <Field

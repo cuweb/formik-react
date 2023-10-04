@@ -74,7 +74,7 @@ const MyForm = () => {
           <Form className="flex flex-col gap-10">
             {/* Multiple Text Input */}
             <FieldWrapper cols={2}>
-              <Input type="text" label="First Name" name="firstName" />
+              <Input type="text" label="First Name" name="firstName" required />
               <Input
                 type="text"
                 id="testingText"
@@ -163,11 +163,10 @@ const MyForm = () => {
             {/* Select */}
             <FieldWrapper>
               <Select
-                id="selectExample"
+                name="selectInput"
                 label="Select Example"
                 options={selectData}
               />
-              <ErrorMessage name="selectInput" component="div" />
             </FieldWrapper>
 
             {/* Submit Button */}
