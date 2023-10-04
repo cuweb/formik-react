@@ -1,35 +1,43 @@
 // bg-cyan-500 max-w-5xl mx-auto my-12
 
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { FieldElement } from "./components/FieldWrapper/FieldWrapper";
 
 const MyForm = () => {
   const initialValues = {
-    textInput: '',
-    emailInput: '',
-    passwordInput: '',
+    textInput: "",
+    emailInput: "",
+    passwordInput: "",
     numberInput: 0,
     checkboxInput: false,
-    radioInput: 'option1',
-    selectInput: '',
-    textArea: '',
+    radioInput: "option1",
+    selectInput: "",
+    textArea: "",
   };
 
   const validationSchema = Yup.object({
-    textInput: Yup.string().required('Required field'),
-    emailInput: Yup.string().email('Invalid email address').required('Required field'),
-    passwordInput: Yup.string().min(6, 'Password must be at least 6 characters').required('Required field'),
-    numberInput: Yup.number().required('Required field'),
-    checkboxInput: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
-    radioInput: Yup.string().required('Required field'),
-    selectInput: Yup.string().required('Required field'),
-    textArea: Yup.string().required('Required field'),
+    textInput: Yup.string().required("Required field"),
+    emailInput: Yup.string()
+      .email("Invalid email address")
+      .required("Required field"),
+    passwordInput: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Required field"),
+    numberInput: Yup.number().required("Required field"),
+    checkboxInput: Yup.boolean().oneOf(
+      [true],
+      "You must accept the terms and conditions"
+    ),
+    radioInput: Yup.string().required("Required field"),
+    selectInput: Yup.string().required("Required field"),
+    textArea: Yup.string().required("Required field"),
   });
 
   const handleSubmit = (values, { resetForm }) => {
     // Handle form submission logic here
-    console.log('Form data submitted:', values);
+    console.log("Form data submitted:", values);
     resetForm();
   };
 
@@ -43,11 +51,11 @@ const MyForm = () => {
       >
         <Form className="flex flex-col gap-10">
           {/* Text Input */}
-          <div className="bg-cyan-100 p-2">
+          <FieldElement>
             <label htmlFor="textInput">Text Input</label>
             <Field type="text" id="textInput" name="textInput" />
             <ErrorMessage name="textInput" component="div" />
-          </div>
+          </FieldElement>
 
           {/* Email Input */}
           <div className="bg-cyan-100 p-2">
