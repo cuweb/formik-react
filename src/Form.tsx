@@ -231,7 +231,7 @@ const MyForm = () => {
             <FieldWrapper>
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea3"
                 placeholder="Text area input"
                 maxWidth="md"
                 rows={5}
@@ -243,7 +243,7 @@ const MyForm = () => {
             <FieldWrapper>
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea4"
                 placeholder="Text area input"
                 maxWidth="sm"
                 rows={5}
@@ -255,39 +255,14 @@ const MyForm = () => {
             <FieldWrapper hasColumns>
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea5"
                 placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
-                placeholder="Text area input"
-                rows={5}
-                required
-              />
-            </FieldWrapper>
-
-            {/* Text Area */}
-            <FieldWrapper hasColumns>
-              <TextArea
-                label="TextArea Example"
-                name="textArea2"
-                placeholder="Text area input"
-                rows={5}
-                required
-              />
-              <TextArea
-                label="TextArea Example"
-                name="textArea2"
-                placeholder="Text area input"
-                rows={5}
-                required
-              />
-              <TextArea
-                label="TextArea Example"
-                name="textArea2"
+                name="textArea6"
                 placeholder="Text area input"
                 rows={5}
                 required
@@ -298,28 +273,53 @@ const MyForm = () => {
             <FieldWrapper hasColumns>
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea7"
                 placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea8"
                 placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea9"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper hasColumns>
+              <TextArea
+                label="TextArea Example"
+                name="textArea10"
                 placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
-                name="textArea2"
+                name="textArea11"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea12"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea13"
                 placeholder="Text area input"
                 rows={5}
                 required
@@ -345,9 +345,37 @@ const MyForm = () => {
               </FieldGroup>
             </FieldWrapper>
 
+            {/* Checkboxes */}
+            <FieldWrapper>
+              <FieldGroup
+                id="checkbox-group-example-2"
+                legend="Checkbox Legend"
+                isInline
+              >
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
+                <ErrorMessage name="checkboxInput" component="div" />
+              </FieldGroup>
+            </FieldWrapper>
+
             {/* Radio Buttons */}
             <FieldWrapper>
-              <FieldGroup id="radio-group-example-2" legend="Radio Legend">
+              <FieldGroup id="radio-group-example-1" legend="Radio Legend">
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
+                <ErrorMessage name="radioInput" component="div" />
+              </FieldGroup>
+            </FieldWrapper>
+
+            {/* Radio Buttons */}
+            <FieldWrapper>
+              <FieldGroup
+                id="radio-group-example-2"
+                legend="Radio Legend"
+                isInline
+              >
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="radio" value={item.value} />
                 ))}
@@ -357,13 +385,16 @@ const MyForm = () => {
 
             {/* Combo! */}
             <FieldWrapper hasColumns>
-              <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+              <FieldGroup
+                id="checkbox-group-example-3"
+                legend="Checkbox Legend"
+              >
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="checkbox" value={item.value} />
                 ))}
                 <ErrorMessage name="checkboxInput" component="div" />
               </FieldGroup>
-              <FieldGroup id="radio-group-example" legend="Radio Legend">
+              <FieldGroup id="radio-group-example-3" legend="Radio Legend">
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="radio" value={item.value} />
                 ))}
@@ -372,38 +403,191 @@ const MyForm = () => {
             </FieldWrapper>
 
             {/* Select */}
-            <FieldWrapper hasColumns>
+            <FieldWrapper>
               <Select
-                name="selectInput"
+                name="selectInput1a"
                 label="Select Example"
                 options={selectData}
                 onChange={(event) => {
                   setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
 
+            {/* Select */}
+            <FieldWrapper>
+              <Select
+                name="selectInput1b"
+                label="Select Example"
+                maxWidth="lg"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
+
+            {/* Select */}
+            <FieldWrapper>
+              <Select
+                name="selectInput1c"
+                label="Select Example"
+                maxWidth="md"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
+
+            {/* Select */}
+            <FieldWrapper>
+              <Select
+                name="selectInput1d"
+                label="Select Example"
+                maxWidth="sm"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
+
+            {/* Select */}
+            <FieldWrapper hasColumns>
+              <Select
+                name="selectInput2"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
                   if (event.target.value === "option1") {
                     setFieldValue("autoSelect", "option5");
                   }
                 }}
               />
               <Select
-                name="autoSelect"
+                name="selectInput3"
                 label="Select Example"
                 options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
+
+            {/* Select */}
+            <FieldWrapper hasColumns>
+              <Select
+                name="selectInput4"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="selectInput5"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="selectInput6"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+            </FieldWrapper>
+
+            {/* Select */}
+            <FieldWrapper hasColumns>
+              <Select
+                name="selectInput7"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="selectInput8"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="selectInput9"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="selectInput10"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
               />
             </FieldWrapper>
 
             {/* Submit Button */}
-            <FieldWrapper hasColumns>
+            {/* <FieldWrapper> */}
+            <div>
               <button
                 type="submit"
-                className="px-4 py-2 mt-3 font-bold text-white bg-red-500 rounded hover:bg-red-700"
+                aria-label="Primary Red"
+                className="inline-flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium text-white rounded-md cu-button not-prose md:px-6 md:py-3 md:text-base hover:text-white focus:outline-none bg-cu-red hover:bg-cu-black-600"
               >
                 {isSubmitting ? "Submiting..." : "Submit"}
               </button>
-              {/* <button type="reset" onClick={resetForm}>
-                Clear Form{" "}
-              </button> */}
-            </FieldWrapper>
+            </div>
+            {/* </FieldWrapper> */}
           </Form>
         )}
       </Formik>

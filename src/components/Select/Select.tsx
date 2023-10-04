@@ -5,10 +5,12 @@ import {
   fieldStyles,
   labelStyles,
 } from "../../styles/styles";
+import { maxWidthClass } from "../../styles/optionClasses";
 
 export interface SelectProps {
   name: string;
   label: string;
+  maxWidth?: "xl" | "lg" | "md" | "sm";
   required?: boolean;
   options: {
     value: string;
@@ -19,6 +21,7 @@ export interface SelectProps {
 export const Select = ({
   label,
   name,
+  maxWidth = "xl",
   required,
   options,
   ...props
@@ -26,7 +29,7 @@ export const Select = ({
   SelectHTMLAttributes<HTMLSelectElement> &
   ClassAttributes<HTMLSelectElement>) => {
   return (
-    <div>
+    <div className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]}`}>
       <label htmlFor={name} className={labelStyles.label}>
         {label} {required && <span className="text-red-700">*</span>}
       </label>
