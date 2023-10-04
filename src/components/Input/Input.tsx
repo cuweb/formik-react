@@ -1,27 +1,51 @@
-import { Field, ErrorMessage } from "formik";
-import { labelStyles, fieldStyles } from "../../styles/styles";
+import { Field, ErrorMessage, getIn, useFormikContext } from "formik";
+import {
+  labelStyles,
+  fieldStyles,
+  fieldErrorStyles,
+} from "../../styles/styles";
+import { InputHTMLAttributes, ClassAttributes } from "react";
 
 export interface InputProps {
-  id: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   type: "text" | "email" | "number" | "password";
+  name: string;
 }
 
-export const Input = ({ id, label, type, placeholder }: InputProps) => {
+export const Input = ({
+  label,
+  type,
+  placeholder,
+  name,
+  ...props
+}: InputProps &
+  InputHTMLAttributes<HTMLInputElement> &
+  ClassAttributes<HTMLInputElement>) => {
+  const { errors } = useFormikContext();
+  const fieldErrors = getIn(errors, name);
   return (
     <div>
-      <label htmlFor={id} className={labelStyles.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className={labelStyles.label}>
+          {label}
+        </label>
+      )}
       <Field
+        {...props}
         type={type}
-        id={id}
-        name={id}
+        id={name}
+        name={name}
         placeholder={placeholder}
-        className={fieldStyles.input}
+        className={`${fieldStyles.input} ${
+          fieldErrors ? "border-2 border-red-600" : ""
+        } `}
       />
-      <ErrorMessage name={id} component="div" />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className={` ${fieldErrorStyles.input}`}
+      />
     </div>
   );
 };
