@@ -26,11 +26,11 @@ const MyForm = () => {
   const initialValues: FormValuesType = {
     firstName: "ish",
     lastName: "",
-    emailInput: "test.test@cmail.com",
-    passwordInput: "testing",
+    emailInput: "",
+    passwordInput: "",
     numberInput: 0,
     checkboxInput: false,
-    radioInput: "Lorem ipsum",
+    radioInput: "",
     selectInput: "",
     autoSelect: "",
     textArea: "",
@@ -127,19 +127,19 @@ const MyForm = () => {
             <FieldWrapper hasColumns>
               <Input
                 type="text"
-                name="testingText5"
+                name="testingText7"
                 label="Input Field"
                 placeholder="Two column layout"
               />
               <Input
                 type="text"
-                name="testingText6"
+                name="testingText8"
                 label="Input Field"
                 placeholder="Two column layout"
               />
               <Input
                 type="text"
-                name="testingText6"
+                name="testingText9"
                 label="Input Field"
                 placeholder="Two column layout"
               />
@@ -149,25 +149,25 @@ const MyForm = () => {
             <FieldWrapper hasColumns>
               <Input
                 type="text"
-                name="testingText5"
+                name="testingText10"
                 label="Input Field"
                 placeholder="Two column layout"
               />
               <Input
                 type="text"
-                name="testingText6"
+                name="testingText11"
                 label="Input Field"
                 placeholder="Two column layout"
               />
               <Input
                 type="text"
-                name="testingText6"
+                name="testingText12"
                 label="Input Field"
                 placeholder="Two column layout"
               />
               <Input
                 type="text"
-                name="testingText6"
+                name="testingText13"
                 label="Input Field"
                 placeholder="Two column layout"
               />
@@ -180,6 +180,7 @@ const MyForm = () => {
                 label="Email Component Example"
                 name="emailInput"
                 placeholder="Email"
+                maxWidth="md"
               />
             </FieldWrapper>
 
@@ -190,6 +191,7 @@ const MyForm = () => {
                 label="Password Component Example"
                 name="passwordInput"
                 placeholder="******"
+                maxWidth="md"
               />
             </FieldWrapper>
 
@@ -199,11 +201,7 @@ const MyForm = () => {
                 type="number"
                 name="numberField"
                 label="Number Component Example"
-              />
-              <Input
-                type="number"
-                name="numberField"
-                label="Number Component Example"
+                maxWidth="md"
               />
             </FieldWrapper>
 
@@ -211,8 +209,119 @@ const MyForm = () => {
             <FieldWrapper>
               <TextArea
                 label="TextArea Example"
-                name="textArea"
-                placeholder="text area input "
+                name="textArea1"
+                placeholder="Text area input"
+                maxWidth="xl"
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                maxWidth="lg"
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                maxWidth="md"
+                rows={5}
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                maxWidth="sm"
+                rows={5}
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper hasColumns>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper hasColumns>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+            </FieldWrapper>
+
+            {/* Text Area */}
+            <FieldWrapper hasColumns>
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
+                required
+              />
+              <TextArea
+                label="TextArea Example"
+                name="textArea2"
+                placeholder="Text area input"
+                rows={5}
                 required
               />
             </FieldWrapper>
@@ -225,7 +334,10 @@ const MyForm = () => {
 
             {/* Checkboxes */}
             <FieldWrapper>
-              <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+              <FieldGroup
+                id="checkbox-group-example-1"
+                legend="Checkbox Legend"
+              >
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="checkbox" value={item.value} />
                 ))}
@@ -235,7 +347,7 @@ const MyForm = () => {
 
             {/* Radio Buttons */}
             <FieldWrapper>
-              <FieldGroup id="radio-group-example" legend="Radio Legend">
+              <FieldGroup id="radio-group-example-2" legend="Radio Legend">
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="radio" value={item.value} />
                 ))}

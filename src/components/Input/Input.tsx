@@ -8,7 +8,7 @@ import {
 import { maxWidthClass } from "../../styles/optionClasses";
 
 export interface InputProps {
-  label?: string;
+  label: string;
   name: string;
   placeholder?: string;
   maxWidth?: "xl" | "lg" | "md" | "sm";
@@ -42,7 +42,6 @@ export const Input = ({
         className={`${
           fieldErrors ? fieldStyles.errorInput : fieldStyles.input
         }`}
-        // className={fieldStyles.input}
       />
       <ErrorMessage
         name={name}

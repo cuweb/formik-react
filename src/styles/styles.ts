@@ -3,9 +3,9 @@ export const labelStyles = {
 }
 
 export const fieldStyles = {
-  input: `border border-cu-black-200 rounded-md placeholder:text-cu-black-300`,
-  select: "border border-slate-300 rounded-md p-",
-  errorInput: "border border-red-600 rounded-md p-2",
+  input: `border border-cu-black-200 rounded-md placeholder:text-cu-black-400`,
+  select: `border border-cu-black-200 rounded-md`,
+  errorInput: `border border-red-600 rounded-md p-2`,
 };
 
 export const fieldErrorStyles = {

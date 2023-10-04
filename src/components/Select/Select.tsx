@@ -8,7 +8,7 @@ import {
 
 export interface SelectProps {
   name: string;
-  label?: string;
+  label: string;
   required?: boolean;
   options: {
     value: string;
@@ -27,11 +27,9 @@ export const Select = ({
   ClassAttributes<HTMLSelectElement>) => {
   return (
     <div>
-      {label && (
-        <label htmlFor={name} className={labelStyles.label}>
-          {label} {required && <span className="text-red-700">*</span>}
-        </label>
-      )}
+      <label htmlFor={name} className={labelStyles.label}>
+        {label} {required && <span className="text-red-700">*</span>}
+      </label>
       <Field
         as="select"
         id={name}
