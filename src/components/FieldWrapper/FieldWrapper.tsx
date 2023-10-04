@@ -6,5 +6,6 @@ export interface FieldWrapperProps {
 }
 
 export const FieldWrapper = ({ children, cols = 1 }: FieldWrapperProps) => {
-  return <div className="bg-slate-200 p-2 flex gap-10">{children}</div>;
+  const columns = cols === 1 ? "flex-col" : "flex-row";
+  return <div className={`flex ${columns} gap-3`}>{children}</div>;
 };

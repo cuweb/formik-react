@@ -155,6 +155,22 @@ const MyForm = () => {
             </FieldGroup>
           </FieldWrapper>
 
+          {/* Combo! */}
+          <FieldWrapper cols={2}>
+            <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+              {checkRadioData.map((item, index) => (
+                <CheckRadio key={index} type="checkbox" value={item.value} />
+              ))}
+              <ErrorMessage name="checkboxInput" component="div" />
+            </FieldGroup>
+            <FieldGroup id="radio-group-example" legend="Radio Legend">
+              {checkRadioData.map((item, index) => (
+                <CheckRadio key={index} type="radio" value={item.value} />
+              ))}
+              <ErrorMessage name="radioInput" component="div" />
+            </FieldGroup>
+          </FieldWrapper>
+
           {/* Select */}
           <FieldWrapper>
             <Select

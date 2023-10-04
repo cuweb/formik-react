@@ -1,4 +1,5 @@
 import { Field, ErrorMessage } from "formik";
+import { labelStyles, fieldStyles } from "../../styles/styles";
 
 export interface InputProps {
   id: string;
@@ -9,10 +10,18 @@ export interface InputProps {
 
 export const Input = ({ id, label, type, placeholder }: InputProps) => {
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
-      <Field type={type} id={id} name={id} placeholder={placeholder} />
+    <div>
+      <label htmlFor={id} className={labelStyles.label}>
+        {label}
+      </label>
+      <Field
+        type={type}
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        className={fieldStyles.input}
+      />
       <ErrorMessage name={id} component="div" />
-    </>
+    </div>
   );
 };
