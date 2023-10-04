@@ -26,7 +26,7 @@ export const Select = ({
   SelectHTMLAttributes<HTMLSelectElement> &
   ClassAttributes<HTMLSelectElement>) => {
   return (
-    <>
+    <div>
       {label && (
         <label htmlFor={name} className={labelStyles.label}>
           {label} {required && <span className="text-red-700">*</span>}
@@ -50,6 +50,6 @@ export const Select = ({
         component="div"
         className={` ${fieldErrorStyles.input}`}
       />
-    </>
+    </div>
   );
 };

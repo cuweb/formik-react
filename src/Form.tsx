@@ -18,6 +18,7 @@ type FormValuesType = {
   checkboxInput: boolean;
   radioInput: string;
   selectInput: string;
+  autoSelect: string;
   textArea: string;
 };
 
@@ -31,6 +32,7 @@ const MyForm = () => {
     checkboxInput: false,
     radioInput: "Lorem ipsum",
     selectInput: "",
+    autoSelect: "",
     textArea: "",
   };
 
@@ -49,6 +51,7 @@ const MyForm = () => {
     ),
     radioInput: Yup.string(),
     selectInput: Yup.string(),
+    autoSelect: Yup.string(),
     textArea: Yup.string(),
   });
 
@@ -152,18 +155,30 @@ const MyForm = () => {
                 ))}
                 <ErrorMessage name="checkboxInput" component="div" />
               </FieldGroup>
-              <FieldGroup id="radio-group-example" legend="Radio Legend">
+              {/* <FieldGroup id="radio-group-example" legend="Radio Legend">
                 {checkRadioData.map((item, index) => (
                   <CheckRadio key={index} type="radio" value={item.value} />
                 ))}
                 <ErrorMessage name="radioInput" component="div" />
-              </FieldGroup>
+              </FieldGroup> */}
             </FieldWrapper>
 
             {/* Select */}
-            <FieldWrapper>
+            <FieldWrapper cols={2}>
               <Select
                 name="selectInput"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="autoSelect"
                 label="Select Example"
                 options={selectData}
               />
