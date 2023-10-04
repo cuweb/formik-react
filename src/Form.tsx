@@ -60,34 +60,108 @@ const MyForm = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto my-12">
+    <div className="p-12 mx-auto max-w-7xl">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form className="flex flex-col gap-10">
-          {/* Text Input */}
+          {/* Text Inputs */}
           <FieldWrapper>
             <Input
               type="text"
-              id="testingText"
-              label="Text Component Example"
-              placeholder="Text Component Example"
+              id="testingText1"
+              label="Input Field"
+              maxWidth="xl"
+              placeholder="Input at extra large width"
+            />
+            <Input
+              type="text"
+              id="testingText2"
+              label="Input Field"
+              maxWidth="lg"
+              placeholder="Input at large width width"
+            />
+            <Input
+              type="text"
+              id="testingText3"
+              label="Input Field"
+              maxWidth="md"
+              placeholder="Input at medium width width"
+            />
+            <Input
+              type="text"
+              id="testingText4"
+              label="Input Field"
+              maxWidth="sm"
+              placeholder="Input at small width width"
             />
           </FieldWrapper>
 
           {/* Multiple Text Input */}
-          <FieldWrapper cols={2}>
+          <FieldWrapper hasColumns>
             <Input
               type="text"
-              id="testingText"
-              label="Text Component Example"
+              id="testingText5"
+              label="Input Field"
+              placeholder="Two column layout"
             />
             <Input
               type="text"
-              id="testingText"
-              label="Text Component Example"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+          </FieldWrapper>
+
+          {/* Multiple Text Input */}
+          <FieldWrapper hasColumns>
+            <Input
+              type="text"
+              id="testingText5"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+            <Input
+              type="text"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+            <Input
+              type="text"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+          </FieldWrapper>
+
+          {/* Multiple Text Input */}
+          <FieldWrapper hasColumns>
+            <Input
+              type="text"
+              id="testingText5"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+            <Input
+              type="text"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+            <Input
+              type="text"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
+            />
+            <Input
+              type="text"
+              id="testingText6"
+              label="Input Field"
+              placeholder="Two column layout"
             />
           </FieldWrapper>
 
@@ -110,15 +184,15 @@ const MyForm = () => {
           </FieldWrapper>
 
           {/* Number Input */}
-          <FieldWrapper cols={2}>
+          <FieldWrapper hasColumns>
             <Input
               type="number"
-              id="numberField"
+              id="numberField1"
               label="Number Component Example"
             />
             <Input
               type="number"
-              id="numberField"
+              id="numberField2"
               label="Number Component Example"
             />
           </FieldWrapper>
@@ -147,7 +221,7 @@ const MyForm = () => {
 
           {/* Radio Buttons */}
           <FieldWrapper>
-            <FieldGroup id="radio-group-example" legend="Radio Legend">
+            <FieldGroup id="radio-group-example-1" legend="Radio Legend">
               {checkRadioData.map((item, index) => (
                 <CheckRadio key={index} type="radio" value={item.value} />
               ))}
@@ -156,8 +230,8 @@ const MyForm = () => {
           </FieldWrapper>
 
           {/* Combo! */}
-          <FieldWrapper cols={2}>
-            <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+          <FieldWrapper hasColumns>
+            <FieldGroup id="checkbox-group-example-2" legend="Checkbox Legend">
               {checkRadioData.map((item, index) => (
                 <CheckRadio key={index} type="checkbox" value={item.value} />
               ))}

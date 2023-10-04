@@ -4,9 +4,9 @@ module.exports = {
     "./src/*.{js,jsx,ts,tsx}",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  presets: [require('rds-tailwind-theme')],
+  // theme: {
+  //   extend: {},
+  // },
+  // plugins: [],
 }
-

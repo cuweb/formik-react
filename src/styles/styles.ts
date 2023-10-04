@@ -1,7 +1,7 @@
 export const labelStyles = {
-  label: `block`
+  label: `block font-semibold`
 }
 
 export const fieldStyles = {
-  input: `border border-slate-300 rounded-md p-2`
+  input: `border border-cu-black-200 rounded-md placeholder:text-cu-black-300`
 }
