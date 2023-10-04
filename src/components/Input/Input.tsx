@@ -8,7 +8,6 @@ import { InputHTMLAttributes, ClassAttributes } from "react";
 
 export interface InputProps {
   label?: string;
-  placeholder?: string;
   type: "text" | "email" | "number" | "password";
   name: string;
 }
@@ -16,7 +15,6 @@ export interface InputProps {
 export const Input = ({
   label,
   type,
-  placeholder,
   name,
   ...props
 }: InputProps &
@@ -24,6 +22,7 @@ export const Input = ({
   ClassAttributes<HTMLInputElement>) => {
   const { errors } = useFormikContext();
   const fieldErrors = getIn(errors, name);
+
   return (
     <div>
       {label && (
@@ -36,9 +35,8 @@ export const Input = ({
         type={type}
         id={name}
         name={name}
-        placeholder={placeholder}
-        className={`${fieldStyles.input} ${
-          fieldErrors ? "border-2 border-red-600" : ""
+        className={` ${
+          fieldErrors ? fieldStyles.errorInput : fieldStyles.input
         } `}
       />
       <ErrorMessage

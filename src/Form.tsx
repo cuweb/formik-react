@@ -10,7 +10,8 @@ import { checkRadioData, selectData } from "./data/data";
 import { TextArea } from "./components/TextArea/TextArea";
 
 type FormValuesType = {
-  textInput: string;
+  firstName: string;
+  lastName: string;
   emailInput: string;
   passwordInput: string;
   numberInput: number;
@@ -22,9 +23,10 @@ type FormValuesType = {
 
 const MyForm = () => {
   const initialValues: FormValuesType = {
-    textInput: "",
-    emailInput: "",
-    passwordInput: "",
+    firstName: "ish",
+    lastName: "",
+    emailInput: "test.test@cmail.com",
+    passwordInput: "testing",
     numberInput: 0,
     checkboxInput: false,
     radioInput: "Lorem ipsum",
@@ -33,30 +35,32 @@ const MyForm = () => {
   };
 
   const validationSchema = Yup.object({
-    textInput: Yup.string().required("Required field"),
-    emailInput: Yup.string()
-      .email("Invalid email address")
-      .required("Required field"),
-    passwordInput: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Required field"),
-    numberInput: Yup.number().required("Required field"),
+    firstName: Yup.string().required("first Name is required "),
+    lastName: Yup.string(),
+    emailInput: Yup.string().email("Invalid email address"),
+    passwordInput: Yup.string().min(
+      6,
+      "Password must be at least 6 characters"
+    ),
+    numberInput: Yup.number(),
     checkboxInput: Yup.boolean().oneOf(
       [true],
       "You must accept the terms and conditions"
     ),
-    radioInput: Yup.string().required("Required field"),
-    selectInput: Yup.string().required("Required field"),
-    textArea: Yup.string().required("Required field"),
+    radioInput: Yup.string(),
+    selectInput: Yup.string(),
+    textArea: Yup.string(),
   });
 
   const handleSubmit = (
     values: FormValuesType,
-    { resetForm }: FormikHelpers<FormValuesType>
+    { setSubmitting, resetForm }: FormikHelpers<FormValuesType>
   ) => {
     // Handle form submission logic here
     console.log("Form data submitted:", values);
-    resetForm();
+    alert(JSON.stringify(values, null, 2));
+    setSubmitting(false);
+    // resetForm();
   };
 
   return (
@@ -68,30 +72,14 @@ const MyForm = () => {
       >
         {({ isSubmitting, values, setFieldValue, resetForm }) => (
           <Form className="flex flex-col gap-10">
-            {/* Text Input */}
-            <FieldWrapper>
-              <Input
-                type="text"
-                id="testingText"
-                label="Text Component Example"
-                placeholder="Text Component Example"
-                name={""}
-              />
-            </FieldWrapper>
-
             {/* Multiple Text Input */}
             <FieldWrapper cols={2}>
+              <Input type="text" label="First Name" name="firstName" />
               <Input
                 type="text"
                 id="testingText"
-                label="Text Component Example"
-                name={""}
-              />
-              <Input
-                type="text"
-                id="testingText"
-                label="Text Component Example"
-                name={""}
+                label="Last Name"
+                name="lastName"
               />
             </FieldWrapper>
 
@@ -99,9 +87,9 @@ const MyForm = () => {
             <FieldWrapper>
               <Input
                 type="email"
-                id="emailField"
                 label="Email Component Example"
-                name={""}
+                name="emailInput"
+                placeholder="Email"
               />
             </FieldWrapper>
 
@@ -109,25 +97,18 @@ const MyForm = () => {
             <FieldWrapper>
               <Input
                 type="password"
-                id="passwordField"
                 label="Password Component Example"
-                name={""}
+                name="passwordInput"
+                placeholder="******"
               />
             </FieldWrapper>
 
             {/* Number Input */}
-            <FieldWrapper cols={2}>
+            <FieldWrapper>
               <Input
                 type="number"
-                id="numberField"
                 label="Number Component Example"
-                name={""}
-              />
-              <Input
-                type="number"
-                id="numberField"
-                label="Number Component Example"
-                name={""}
+                name="numberInput"
               />
             </FieldWrapper>
 
@@ -190,14 +171,16 @@ const MyForm = () => {
             </FieldWrapper>
 
             {/* Submit Button */}
-            <FieldWrapper>
+            <FieldWrapper cols={2}>
               <button
                 type="submit"
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-3"
               >
                 {isSubmitting ? "Submiting..." : "Submit"}
               </button>
-              <button onClick={() => resetForm()}>Clear Form </button>
+              {/* <button type="reset" onClick={resetForm}>
+                Clear Form{" "}
+              </button> */}
             </FieldWrapper>
           </Form>
         )}

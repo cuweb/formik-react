@@ -4,6 +4,7 @@ export const labelStyles = {
 
 export const fieldStyles = {
   input: `border border-slate-300 rounded-md p-2`,
+  errorInput: "border border-red-600 rounded-md p-2",
 };
 
 export const fieldErrorStyles = {
