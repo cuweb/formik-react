@@ -1,15 +1,56 @@
-import { Field, ErrorMessage } from "formik";
+import { Field, ErrorMessage, getIn, useFormikContext } from "formik";
+import {
+  fieldErrorStyles,
+  fieldStyles,
+  labelStyles,
+} from "../../styles/styles";
+import { InputHTMLAttributes, ClassAttributes } from "react";
 
-export interface TextAreaProps {
-  id: string;
-  label: string;
+interface TextAreaProps {
+  name: string;
+  label?: string;
+  required?: boolean;
+  rows?: number;
 }
 
-export const TextArea = ({ id, label }: TextAreaProps) => {
+const TextArea = ({
+  label,
+  name,
+  required,
+  rows,
+  ...props
+}: TextAreaProps &
+  InputHTMLAttributes<HTMLInputElement> &
+  ClassAttributes<HTMLInputElement>) => {
+  const { errors } = useFormikContext();
+  const fieldErrors = getIn(errors, name);
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
-      <Field as="textarea" id={id} name={id} />
-    </>
+    <div>
+      {label && (
+        <label htmlFor={name} className={labelStyles.label}>
+          {label} {required && <span className="text-red-700">*</span>}
+        </label>
+      )}
+
+      <div className="mt-2">
+        <Field
+          {...props}
+          as="textarea"
+          id={name}
+          name={name}
+          rows={rows}
+          className={` ${
+            fieldErrors ? fieldStyles.errorInput : fieldStyles.input
+          } `}
+        />
+        <ErrorMessage
+          name={name}
+          component="div"
+          className={` ${fieldErrorStyles.input}`}
+        />
+      </div>
+    </div>
   );
 };
+
+export default TextArea;

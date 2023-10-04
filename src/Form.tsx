@@ -7,7 +7,7 @@ import { FieldGroup } from "./components/FieldGroup/FieldGroup";
 import { CheckRadio } from "./components/CheckRadio/CheckRadio";
 import { Select } from "./components/Select/Select";
 import { checkRadioData, selectData } from "./data/data";
-import { TextArea } from "./components/TextArea/TextArea";
+import TextArea from "./components/TextArea/TextArea";
 
 type FormValuesType = {
   firstName: string;
@@ -52,7 +52,7 @@ const MyForm = () => {
     radioInput: Yup.string(),
     selectInput: Yup.string(),
     autoSelect: Yup.string(),
-    textArea: Yup.string(),
+    textArea: Yup.string().required("The Text Area is required "),
   });
 
   const handleSubmit = (
@@ -117,8 +117,12 @@ const MyForm = () => {
 
             {/* Text Area */}
             <FieldWrapper>
-              <TextArea id="textAreaExample" label="TextArea Example" />
-              <ErrorMessage name="textArea" component="div" />
+              <TextArea
+                label="TextArea Example"
+                name="textArea"
+                placeholder="text area input "
+                required
+              />
             </FieldWrapper>
 
             {/* Checkbox */}
