@@ -7,56 +7,63 @@ import { FieldGroup } from "./components/FieldGroup/FieldGroup";
 import { CheckRadio } from "./components/CheckRadio/CheckRadio";
 import { Select } from "./components/Select/Select";
 import { checkRadioData, selectData } from "./data/data";
-import { TextArea } from "./components/TextArea/TextArea";
+import TextArea from "./components/TextArea/TextArea";
 
 type FormValuesType = {
-  textInput: string;
+  firstName: string;
+  lastName: string;
   emailInput: string;
   passwordInput: string;
   numberInput: number;
   checkboxInput: boolean;
   radioInput: string;
   selectInput: string;
+  autoSelect: string;
   textArea: string;
 };
 
 const MyForm = () => {
   const initialValues: FormValuesType = {
-    textInput: "",
-    emailInput: "",
-    passwordInput: "",
+    firstName: "ish",
+    lastName: "",
+    emailInput: "test.test@cmail.com",
+    passwordInput: "testing",
     numberInput: 0,
     checkboxInput: false,
     radioInput: "Lorem ipsum",
     selectInput: "",
+    autoSelect: "",
     textArea: "",
   };
 
   const validationSchema = Yup.object({
-    textInput: Yup.string().required("Required field"),
-    emailInput: Yup.string()
-      .email("Invalid email address")
-      .required("Required field"),
-    passwordInput: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Required field"),
-    numberInput: Yup.number().required("Required field"),
+    firstName: Yup.string().required("first Name is required "),
+    lastName: Yup.string(),
+    emailInput: Yup.string().email("Invalid email address"),
+    passwordInput: Yup.string().min(
+      6,
+      "Password must be at least 6 characters"
+    ),
+    numberInput: Yup.number(),
     checkboxInput: Yup.boolean().oneOf(
       [true],
       "You must accept the terms and conditions"
     ),
-    radioInput: Yup.string().required("Required field"),
-    selectInput: Yup.string().required("Required field"),
-    textArea: Yup.string().required("Required field"),
+    radioInput: Yup.string(),
+    selectInput: Yup.string(),
+    autoSelect: Yup.string(),
+    textArea: Yup.string().required("The Text Area is required "),
   });
 
   const handleSubmit = (
     values: FormValuesType,
-    { resetForm }: FormikHelpers<FormValuesType>
+    { setSubmitting, resetForm }: FormikHelpers<FormValuesType>
   ) => {
     // Handle form submission logic here
     console.log("Form data submitted:", values);
-    resetForm();
+    alert(JSON.stringify(values, null, 2));
+    setSubmitting(false);
+    // resetForm();
   };
 
   return (
@@ -66,200 +73,227 @@ const MyForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="flex flex-col gap-10">
-          {/* Text Inputs */}
-          <FieldWrapper>
-            <Input
-              type="text"
-              id="testingText1"
-              label="Input Field"
-              maxWidth="xl"
-              placeholder="Input at extra large width"
-            />
-            <Input
-              type="text"
-              id="testingText2"
-              label="Input Field"
-              maxWidth="lg"
-              placeholder="Input at large width width"
-            />
-            <Input
-              type="text"
-              id="testingText3"
-              label="Input Field"
-              maxWidth="md"
-              placeholder="Input at medium width width"
-            />
-            <Input
-              type="text"
-              id="testingText4"
-              label="Input Field"
-              maxWidth="sm"
-              placeholder="Input at small width width"
-            />
-          </FieldWrapper>
+        {({ isSubmitting, values, setFieldValue, resetForm }) => (
+          <Form className="flex flex-col gap-10">
+            {/* Text Inputs */}
+            <FieldWrapper>
+              <Input
+                type="text"
+                name="testingText1"
+                label="Input Field"
+                maxWidth="xl"
+                placeholder="Input at extra large width"
+              />
+              <Input
+                type="text"
+                name="testingText2"
+                label="Input Field"
+                maxWidth="lg"
+                placeholder="Input at large width width"
+              />
+              <Input
+                type="text"
+                name="testingText3"
+                label="Input Field"
+                maxWidth="md"
+                placeholder="Input at medium width width"
+              />
+              <Input
+                type="text"
+                name="testingText4"
+                label="Input Field"
+                maxWidth="sm"
+                placeholder="Input at small width width"
+              />
+            </FieldWrapper>
 
-          {/* Multiple Text Input */}
-          <FieldWrapper hasColumns>
-            <Input
-              type="text"
-              id="testingText5"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-          </FieldWrapper>
+            {/* Multiple Text Input */}
+            <FieldWrapper hasColumns>
+              <Input
+                type="text"
+                name="testingText5"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+            </FieldWrapper>
 
-          {/* Multiple Text Input */}
-          <FieldWrapper hasColumns>
-            <Input
-              type="text"
-              id="testingText5"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-          </FieldWrapper>
+            {/* Multiple Text Input */}
+            <FieldWrapper hasColumns>
+              <Input
+                type="text"
+                name="testingText5"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+            </FieldWrapper>
 
-          {/* Multiple Text Input */}
-          <FieldWrapper hasColumns>
-            <Input
-              type="text"
-              id="testingText5"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-            <Input
-              type="text"
-              id="testingText6"
-              label="Input Field"
-              placeholder="Two column layout"
-            />
-          </FieldWrapper>
+            {/* Multiple Text Input */}
+            <FieldWrapper hasColumns>
+              <Input
+                type="text"
+                name="testingText5"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+              <Input
+                type="text"
+                name="testingText6"
+                label="Input Field"
+                placeholder="Two column layout"
+              />
+            </FieldWrapper>
 
-          {/* Email Input */}
-          <FieldWrapper>
-            <Input
-              type="email"
-              id="emailField"
-              label="Email Component Example"
-            />
-          </FieldWrapper>
+            {/* Email Input */}
+            <FieldWrapper>
+              <Input
+                type="email"
+                label="Email Component Example"
+                name="emailInput"
+                placeholder="Email"
+              />
+            </FieldWrapper>
 
-          {/* Password Input */}
-          <FieldWrapper>
-            <Input
-              type="password"
-              id="passwordField"
-              label="Password Component Example"
-            />
-          </FieldWrapper>
+            {/* Password Input */}
+            <FieldWrapper>
+              <Input
+                type="password"
+                label="Password Component Example"
+                name="passwordInput"
+                placeholder="******"
+              />
+            </FieldWrapper>
 
-          {/* Number Input */}
-          <FieldWrapper hasColumns>
-            <Input
-              type="number"
-              id="numberField1"
-              label="Number Component Example"
-            />
-            <Input
-              type="number"
-              id="numberField2"
-              label="Number Component Example"
-            />
-          </FieldWrapper>
+            {/* Number Input */}
+            <FieldWrapper hasColumns>
+              <Input
+                type="number"
+                name="numberField"
+                label="Number Component Example"
+              />
+              <Input
+                type="number"
+                name="numberField"
+                label="Number Component Example"
+              />
+            </FieldWrapper>
 
-          {/* Text Area */}
-          <FieldWrapper>
-            <TextArea id="textAreaExample" label="TextArea Example" />
-            <ErrorMessage name="textArea" component="div" />
-          </FieldWrapper>
+            {/* Text Area */}
+            <FieldWrapper>
+              <TextArea
+                label="TextArea Example"
+                name="textArea"
+                placeholder="text area input "
+                required
+              />
+            </FieldWrapper>
 
-          {/* Checkbox */}
-          <FieldWrapper>
-            <CheckRadio type="checkbox" value="Testing checkbox" />
-            <ErrorMessage name="checkboxInput" component="div" />
-          </FieldWrapper>
-
-          {/* Checkboxes */}
-          <FieldWrapper>
-            <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
-              {checkRadioData.map((item, index) => (
-                <CheckRadio key={index} type="checkbox" value={item.value} />
-              ))}
+            {/* Checkbox */}
+            <FieldWrapper>
+              <CheckRadio type="checkbox" value="Testing checkbox" />
               <ErrorMessage name="checkboxInput" component="div" />
-            </FieldGroup>
-          </FieldWrapper>
+            </FieldWrapper>
 
-          {/* Radio Buttons */}
-          <FieldWrapper>
-            <FieldGroup id="radio-group-example-1" legend="Radio Legend">
-              {checkRadioData.map((item, index) => (
-                <CheckRadio key={index} type="radio" value={item.value} />
-              ))}
-              <ErrorMessage name="radioInput" component="div" />
-            </FieldGroup>
-          </FieldWrapper>
+            {/* Checkboxes */}
+            <FieldWrapper>
+              <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
+                <ErrorMessage name="checkboxInput" component="div" />
+              </FieldGroup>
+            </FieldWrapper>
 
-          {/* Combo! */}
-          <FieldWrapper hasColumns>
-            <FieldGroup id="checkbox-group-example-2" legend="Checkbox Legend">
-              {checkRadioData.map((item, index) => (
-                <CheckRadio key={index} type="checkbox" value={item.value} />
-              ))}
-              <ErrorMessage name="checkboxInput" component="div" />
-            </FieldGroup>
-            <FieldGroup id="radio-group-example" legend="Radio Legend">
-              {checkRadioData.map((item, index) => (
-                <CheckRadio key={index} type="radio" value={item.value} />
-              ))}
-              <ErrorMessage name="radioInput" component="div" />
-            </FieldGroup>
-          </FieldWrapper>
+            {/* Radio Buttons */}
+            <FieldWrapper>
+              <FieldGroup id="radio-group-example" legend="Radio Legend">
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
+                <ErrorMessage name="radioInput" component="div" />
+              </FieldGroup>
+            </FieldWrapper>
 
-          {/* Select */}
-          <FieldWrapper>
-            <Select
-              id="selectExample"
-              label="Select Example"
-              options={selectData}
-            />
-            <ErrorMessage name="selectInput" component="div" />
-          </FieldWrapper>
+            {/* Combo! */}
+            <FieldWrapper hasColumns>
+              <FieldGroup id="checkbox-group-example" legend="Checkbox Legend">
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
+                <ErrorMessage name="checkboxInput" component="div" />
+              </FieldGroup>
+              <FieldGroup id="radio-group-example" legend="Radio Legend">
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
+                <ErrorMessage name="radioInput" component="div" />
+              </FieldGroup>
+            </FieldWrapper>
 
-          {/* Submit Button */}
-          <FieldWrapper>
-            <button type="submit">Submit</button>
-          </FieldWrapper>
-        </Form>
+            {/* Select */}
+            <FieldWrapper hasColumns>
+              <Select
+                name="selectInput"
+                label="Select Example"
+                options={selectData}
+                onChange={(event) => {
+                  setFieldValue("selectInput", event.target.value);
+
+                  if (event.target.value === "option1") {
+                    setFieldValue("autoSelect", "option5");
+                  }
+                }}
+              />
+              <Select
+                name="autoSelect"
+                label="Select Example"
+                options={selectData}
+              />
+            </FieldWrapper>
+
+            {/* Submit Button */}
+            <FieldWrapper hasColumns>
+              <button
+                type="submit"
+                className="px-4 py-2 mt-3 font-bold text-white bg-red-500 rounded hover:bg-red-700"
+              >
+                {isSubmitting ? "Submiting..." : "Submit"}
+              </button>
+              {/* <button type="reset" onClick={resetForm}>
+                Clear Form{" "}
+              </button> */}
+            </FieldWrapper>
+          </Form>
+        )}
       </Formik>
     </div>
   );
