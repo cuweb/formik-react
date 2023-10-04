@@ -6,7 +6,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf node_modules ; yarn install --frozen-lockfile"
   },
   "eslintConfig": {
     "extends": [
@@ -15,6 +16,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.2",
     "@types/react": "^18.2.24",
