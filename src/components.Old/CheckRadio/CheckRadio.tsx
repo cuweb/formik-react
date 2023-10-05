@@ -10,7 +10,7 @@ export const CheckRadio = ({ type, value }: CheckRadioProps) => {
 
   return (
     <>
-      <label>
+      <label className="flex items-center gap-2">
         <Field type={type} name={name} value={value} />
         {value}
       </label>

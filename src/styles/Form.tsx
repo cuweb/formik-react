@@ -1,13 +1,13 @@
 import React from "react";
 import { Formik, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { FieldWrapper } from "./components.Old/FieldWrapper/FieldWrapper";
-import { Input } from "./components.Old/Input/Input";
-import { FieldGroup } from "./components.Old/FieldGroup/FieldGroup";
-import { CheckRadio } from "./components.Old/CheckRadio/CheckRadio";
-import { Select } from "./components.Old/Select/Select";
-import { checkRadioData, selectData } from "./data/data";
-import TextArea from "./components.Old/TextArea/TextArea";
+import { FieldWrapper } from "../components/FieldWrapper/FieldWrapper";
+import { Input } from "../components/Input/Input";
+import { FieldGroup } from "../components/FieldGroup/FieldGroup";
+import { CheckRadio } from "../components/CheckRadio/CheckRadio";
+import { Select } from "../components/Select/Select";
+import { TextArea } from "../components/TextArea/TextArea";
+import { checkRadioData, selectData } from "../data/data";
 
 type FormValuesType = {
   firstName: string;
@@ -23,70 +23,37 @@ type FormValuesType = {
 };
 
 const MyForm = () => {
-  // const initialValues: FormValuesType = {
-  //   firstName: "ish",
-  //   lastName: "",
-  //   emailInput: "",
-  //   passwordInput: "",
-  //   numberInput: 0,
-  //   checkboxInput: false,
-  //   radioInput: "",
-  //   selectInput: "",
-  //   autoSelect: "",
-  //   textArea: "",
-  // };
-
-  // const validationSchema = Yup.object({
-  //   firstName: Yup.string().required("first Name is required "),
-  //   lastName: Yup.string(),
-  //   emailInput: Yup.string().email("Invalid email address"),
-  //   passwordInput: Yup.string().min(
-  //     6,
-  //     "Password must be at least 6 characters"
-  //   ),
-  //   numberInput: Yup.number(),
-  //   checkboxInput: Yup.boolean().oneOf(
-  //     [true],
-  //     "You must accept the terms and conditions"
-  //   ),
-  //   radioInput: Yup.string(),
-  //   selectInput: Yup.string(),
-  //   autoSelect: Yup.string(),
-  //   textArea: Yup.string().required("The Text Area is required "),
-  // });
-
-  const FormikProps = {
-    initialValues: {
-      firstName: "ish",
-      lastName: "",
-      emailInput: "",
-      passwordInput: "",
-      numberInput: 0,
-      checkboxInput: false,
-      radioInput: "",
-      selectInput: "",
-      autoSelect: "",
-      textArea: "",
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string().required("first Name is required "),
-      lastName: Yup.string(),
-      emailInput: Yup.string().email("Invalid email address"),
-      passwordInput: Yup.string().min(
-        6,
-        "Password must be at least 6 characters"
-      ),
-      numberInput: Yup.number(),
-      checkboxInput: Yup.boolean().oneOf(
-        [true],
-        "You must accept the terms and conditions"
-      ),
-      radioInput: Yup.string(),
-      selectInput: Yup.string(),
-      autoSelect: Yup.string(),
-      textArea: Yup.string().required("The Text Area is required "),
-    }),
+  const initialValues: FormValuesType = {
+    firstName: "ish",
+    lastName: "",
+    emailInput: "",
+    passwordInput: "",
+    numberInput: 0,
+    checkboxInput: false,
+    radioInput: "",
+    selectInput: "",
+    autoSelect: "",
+    textArea: "",
   };
+
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required("first Name is required "),
+    lastName: Yup.string(),
+    emailInput: Yup.string().email("Invalid email address"),
+    passwordInput: Yup.string().min(
+      6,
+      "Password must be at least 6 characters"
+    ),
+    numberInput: Yup.number(),
+    checkboxInput: Yup.boolean().oneOf(
+      [true],
+      "You must accept the terms and conditions"
+    ),
+    radioInput: Yup.string(),
+    selectInput: Yup.string(),
+    autoSelect: Yup.string(),
+    textArea: Yup.string().required("The Text Area is required "),
+  });
 
   const handleSubmit = (
     values: FormValuesType,
@@ -102,8 +69,8 @@ const MyForm = () => {
   return (
     <div className="p-12 mx-auto max-w-7xl">
       <Formik
-        initialValues={FormikProps.initialValues}
-        validationSchema={FormikProps.validationSchema}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, values, setFieldValue, resetForm }) => (
@@ -115,95 +82,46 @@ const MyForm = () => {
                 name="testingText1"
                 label="Input Field"
                 maxWidth="xl"
-                placeholder="Input at extra large width"
               />
               <Input
                 type="text"
                 name="testingText2"
                 label="Input Field"
                 maxWidth="lg"
-                placeholder="Input at large width width"
               />
               <Input
                 type="text"
                 name="testingText3"
                 label="Input Field"
                 maxWidth="md"
-                placeholder="Input at medium width width"
               />
               <Input
                 type="text"
                 name="testingText4"
                 label="Input Field"
                 maxWidth="sm"
-                placeholder="Input at small width width"
               />
             </FieldWrapper>
 
             {/* Multiple Text Input */}
             <FieldWrapper hasColumns>
-              <Input
-                type="text"
-                name="testingText5"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText6"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
+              <Input type="text" name="testingText5" label="Input Field" />
+              <Input type="text" name="testingText6" label="Input Field" />
             </FieldWrapper>
 
             {/* Multiple Text Input */}
             <FieldWrapper hasColumns>
-              <Input
-                type="text"
-                name="testingText7"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText8"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText9"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
+              <Input type="text" name="testingText7" label="Input Field" />
+              <Input type="text" name="testingText8" label="Input Field" />
+              <Input type="text" name="testingText9" label="Input Field" />
             </FieldWrapper>
 
             {/* Multiple Text Input */}
             <FieldWrapper hasColumns>
-              <Input
-                type="text"
-                name="testingText10"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText11"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText12"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
-              <Input
-                type="text"
-                name="testingText13"
-                label="Input Field"
-                placeholder="Two column layout"
-              />
+              <Input type="text" name="testingText10" label="Input Field" />
+              <Input type="text" name="testingText11" label="Input Field" />
+              <Input type="text" name="testingText12" label="Input Field" />
+              <Input type="text" name="testingText13" label="Input Field" />
             </FieldWrapper>
 
             {/* Email Input */}
@@ -212,7 +130,6 @@ const MyForm = () => {
                 type="email"
                 label="Email Component Example"
                 name="emailInput"
-                placeholder="Email"
                 maxWidth="md"
               />
             </FieldWrapper>
@@ -223,7 +140,6 @@ const MyForm = () => {
                 type="password"
                 label="Password Component Example"
                 name="passwordInput"
-                placeholder="******"
                 maxWidth="md"
               />
             </FieldWrapper>
@@ -243,7 +159,6 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea1"
-                placeholder="Text area input"
                 maxWidth="xl"
                 required
               />
@@ -254,7 +169,6 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea2"
-                placeholder="Text area input"
                 maxWidth="lg"
                 required
               />
@@ -265,7 +179,6 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea3"
-                placeholder="Text area input"
                 maxWidth="md"
                 rows={5}
                 required
@@ -277,7 +190,6 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea4"
-                placeholder="Text area input"
                 maxWidth="sm"
                 rows={5}
                 required
@@ -289,14 +201,12 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea5"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea6"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
@@ -307,21 +217,18 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea7"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea8"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea9"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
@@ -332,28 +239,24 @@ const MyForm = () => {
               <TextArea
                 label="TextArea Example"
                 name="textArea10"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea11"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea12"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
               <TextArea
                 label="TextArea Example"
                 name="textArea13"
-                placeholder="Text area input"
                 rows={5}
                 required
               />
@@ -371,15 +274,9 @@ const MyForm = () => {
                 id="checkbox-group-example-1"
                 legend="Checkbox Legend"
               >
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio
-                      key={index}
-                      type="checkbox"
-                      value={item.value}
-                    />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
                 <ErrorMessage name="checkboxInput" component="div" />
               </FieldGroup>
             </FieldWrapper>
@@ -391,15 +288,9 @@ const MyForm = () => {
                 legend="Checkbox Legend"
                 isInline
               >
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio
-                      key={index}
-                      type="checkbox"
-                      value={item.value}
-                    />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
                 <ErrorMessage name="checkboxInput" component="div" />
               </FieldGroup>
             </FieldWrapper>
@@ -407,11 +298,9 @@ const MyForm = () => {
             {/* Radio Buttons */}
             <FieldWrapper>
               <FieldGroup id="radio-group-example-1" legend="Radio Legend">
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio key={index} type="radio" value={item.value} />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
                 <ErrorMessage name="radioInput" component="div" />
               </FieldGroup>
             </FieldWrapper>
@@ -423,11 +312,9 @@ const MyForm = () => {
                 legend="Radio Legend"
                 isInline
               >
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio key={index} type="radio" value={item.value} />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
                 <ErrorMessage name="radioInput" component="div" />
               </FieldGroup>
             </FieldWrapper>
@@ -438,23 +325,15 @@ const MyForm = () => {
                 id="checkbox-group-example-3"
                 legend="Checkbox Legend"
               >
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio
-                      key={index}
-                      type="checkbox"
-                      value={item.value}
-                    />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="checkbox" value={item.value} />
+                ))}
                 <ErrorMessage name="checkboxInput" component="div" />
               </FieldGroup>
               <FieldGroup id="radio-group-example-3" legend="Radio Legend">
-                {checkRadioData.map(
-                  (item: { value: string }, index: number) => (
-                    <CheckRadio key={index} type="radio" value={item.value} />
-                  )
-                )}
+                {checkRadioData.map((item, index) => (
+                  <CheckRadio key={index} type="radio" value={item.value} />
+                ))}
                 <ErrorMessage name="radioInput" component="div" />
               </FieldGroup>
             </FieldWrapper>
@@ -465,12 +344,12 @@ const MyForm = () => {
                 name="selectInput1a"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -481,12 +360,12 @@ const MyForm = () => {
                 label="Select Example"
                 maxWidth="lg"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -497,12 +376,12 @@ const MyForm = () => {
                 label="Select Example"
                 maxWidth="md"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -513,12 +392,12 @@ const MyForm = () => {
                 label="Select Example"
                 maxWidth="sm"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -528,23 +407,23 @@ const MyForm = () => {
                 name="selectInput2"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput3"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -554,34 +433,34 @@ const MyForm = () => {
                 name="selectInput4"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput5"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput6"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 
@@ -591,45 +470,45 @@ const MyForm = () => {
                 name="selectInput7"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput8"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput9"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
               <Select
                 name="selectInput10"
                 label="Select Example"
                 options={selectData}
-                onChange={(event) => {
-                  setFieldValue("selectInput", event.target.value);
-                  if (event.target.value === "option1") {
-                    setFieldValue("autoSelect", "option5");
-                  }
-                }}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
             </FieldWrapper>
 

@@ -1,3 +1,4 @@
+import { SelectHTMLAttributes, ClassAttributes } from "react";
 import { Field, ErrorMessage } from "formik";
 import {
   fieldErrorStyles,
@@ -6,35 +7,45 @@ import {
 } from "../../styles/styles";
 import { maxWidthClass } from "../../styles/optionClasses";
 
-interface TextAreaProps {
+export interface SelectProps {
   name: string;
-  label?: string;
+  label: string;
   maxWidth?: "xl" | "lg" | "md" | "sm";
   required?: boolean;
-  rows?: 5 | 10;
+  options: {
+    value: string;
+    label: string;
+  }[];
 }
 
-export const TextArea = ({
+export const Select = ({
   label,
   name,
   maxWidth = "xl",
   required,
-  rows = 10,
+  options,
   ...props
-}: TextAreaProps) => {
+}: SelectProps &
+  SelectHTMLAttributes<HTMLSelectElement> &
+  ClassAttributes<HTMLSelectElement>) => {
   return (
     <div className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]}`}>
       <label htmlFor={name} className={labelStyles.label}>
         {label} {required && <span className="text-red-700">*</span>}
       </label>
       <Field
-        {...props}
-        as="textarea"
+        as="select"
         id={name}
         name={name}
-        rows={rows}
-        className={fieldStyles.input}
-      />
+        className={`${fieldStyles.select}`}
+        {...props}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Field>
       <ErrorMessage
         name={name}
         component="div"

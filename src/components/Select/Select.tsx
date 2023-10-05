@@ -1,5 +1,4 @@
 import { Field, ErrorMessage } from "formik";
-import { SelectHTMLAttributes, ClassAttributes } from "react";
 import {
   fieldErrorStyles,
   fieldStyles,
@@ -25,9 +24,7 @@ export const Select = ({
   required,
   options,
   ...props
-}: SelectProps &
-  SelectHTMLAttributes<HTMLSelectElement> &
-  ClassAttributes<HTMLSelectElement>) => {
+}: SelectProps) => {
   return (
     <div className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]}`}>
       <label htmlFor={name} className={labelStyles.label}>

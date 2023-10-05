@@ -1,4 +1,5 @@
-import { Field, ErrorMessage } from "formik";
+import { InputHTMLAttributes, ClassAttributes } from "react";
+import { Field, ErrorMessage, getIn, useFormikContext } from "formik";
 import {
   labelStyles,
   fieldStyles,
@@ -21,7 +22,13 @@ export const Input = ({
   name,
   placeholder,
   maxWidth = "xl",
-}: InputProps) => {
+  ...props
+}: InputProps &
+  InputHTMLAttributes<HTMLInputElement> &
+  ClassAttributes<HTMLInputElement>) => {
+  const { errors } = useFormikContext();
+  const fieldErrors = getIn(errors, name);
+
   return (
     <div className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]}`}>
       <label htmlFor={name} className={labelStyles.label}>
@@ -32,7 +39,9 @@ export const Input = ({
         id={name}
         name={name}
         placeholder={placeholder}
-        className={fieldStyles.input}
+        className={`${
+          fieldErrors ? fieldStyles.errorInput : fieldStyles.input
+        }`}
       />
       <ErrorMessage
         name={name}

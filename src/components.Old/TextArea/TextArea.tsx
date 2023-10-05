@@ -1,4 +1,5 @@
-import { Field, ErrorMessage } from "formik";
+import { InputHTMLAttributes, ClassAttributes } from "react";
+import { Field, ErrorMessage, getIn, useFormikContext } from "formik";
 import {
   fieldErrorStyles,
   fieldStyles,
@@ -14,14 +15,19 @@ interface TextAreaProps {
   rows?: 5 | 10;
 }
 
-export const TextArea = ({
+const TextArea = ({
   label,
   name,
   maxWidth = "xl",
   required,
   rows = 10,
   ...props
-}: TextAreaProps) => {
+}: TextAreaProps &
+  InputHTMLAttributes<HTMLInputElement> &
+  ClassAttributes<HTMLInputElement>) => {
+  const { errors } = useFormikContext();
+  const fieldErrors = getIn(errors, name);
+
   return (
     <div className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]}`}>
       <label htmlFor={name} className={labelStyles.label}>
@@ -33,7 +39,9 @@ export const TextArea = ({
         id={name}
         name={name}
         rows={rows}
-        className={fieldStyles.input}
+        className={`${
+          fieldErrors ? fieldStyles.errorInput : fieldStyles.input
+        }`}
       />
       <ErrorMessage
         name={name}
@@ -43,3 +51,5 @@ export const TextArea = ({
     </div>
   );
 };
+
+export default TextArea;
