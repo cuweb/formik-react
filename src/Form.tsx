@@ -6,6 +6,8 @@ import { TextArea } from "./components/TextArea/TextArea";
 
 import InputBlocks from "./blocks/InputBlocks";
 import TextAreaBlocks from "./blocks/TextAreaBlocks";
+import CheckboxBlocks from "./blocks/CheckboxBlocks";
+import RadioBlocks from "./blocks/RadioBlocks";
 
 const MainForm = () => {
   const formikProps = {
@@ -44,8 +46,10 @@ const MainForm = () => {
             </FieldWrapper>
 
             {/* Testing a variety of input field configurations */}
-            {/* <InputBlocks />
-            <TextAreaBlocks /> */}
+            {/* <InputBlocks /> */}
+            {/* <TextAreaBlocks /> */}
+            <CheckboxBlocks />
+            <RadioBlocks />
 
             <div>
               <button
