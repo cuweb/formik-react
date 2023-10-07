@@ -26,7 +26,7 @@ const MainForm = () => {
       {(formik) => (
         <Form>
           <div className="flex flex-col gap-10 p-12 mx-auto max-w-7xl">
-            <FieldWrapper hasColumns>
+            {/* <FieldWrapper hasColumns>
               <Input
                 label="Input Field"
                 name="input-field-test"
@@ -34,20 +34,20 @@ const MainForm = () => {
                 placeholder="Testing an input field"
                 required
               />
-            </FieldWrapper>
+            </FieldWrapper> */}
 
-            <FieldWrapper>
+            {/* <FieldWrapper>
               <TextArea
                 label="TextArea Example"
                 name="textarea-test"
                 placeholder="Text area input"
                 required
               />
-            </FieldWrapper>
+            </FieldWrapper> */}
 
             {/* Testing a variety of input field configurations */}
-            {/* <InputBlocks /> */}
-            {/* <TextAreaBlocks /> */}
+            <InputBlocks />
+            <TextAreaBlocks />
             <CheckboxBlocks />
             <RadioBlocks />
 

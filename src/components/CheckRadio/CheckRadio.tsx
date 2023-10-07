@@ -1,23 +1,42 @@
-import { Field } from "formik";
-import { sharedInputProps } from "../../interface/sharedProps";
-import { stringToDashed } from "../../utils/functions";
+import React from "react";
+import { labelStyles } from "../../styles/styles";
+import { CheckRadioOption } from "./Option";
 
-interface CheckRadioProps extends sharedInputProps {
-  type: "checkbox" | "radio";
+interface CheckRadioWrapperProps {
+  children: React.ReactNode;
+  id: string;
+  legend?: string;
+  isInline?: boolean;
 }
 
-export const CheckRadio = ({
-  label,
-  type,
-  name,
-  required,
-}: CheckRadioProps) => {
+export const CheckRadioWrapper = ({
+  children,
+  id,
+  legend,
+  isInline,
+}: CheckRadioWrapperProps) => {
+  const inlineOptions = isInline ? "flex-row gap-5" : "flex-col gap-2";
+
   return (
     <>
-      <label className="flex items-center gap-2">
-        <Field type={type} name={name} value={stringToDashed(label)} />
-        {label} {required && <span className="text-cu-red">*</span>}
-      </label>
+      <div className="flex flex-col gap-2">
+        {legend && (
+          <div id={id} className={labelStyles.label}>
+            {legend}
+          </div>
+        )}
+        <div
+          role="group"
+          aria-labelledby={id}
+          className={`flex ${inlineOptions}`}
+        >
+          {children}
+        </div>
+      </div>
     </>
   );
 };
+
+export const CheckRadio = Object.assign(CheckRadioWrapper, {
+  Option: CheckRadioOption,
+});
