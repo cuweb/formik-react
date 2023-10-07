@@ -9,5 +9,5 @@ export const fieldStyles = {
 };
 
 export const fieldErrorStyles = {
-  input: `text-sm font-medium text-red-700`,
+  input: `text-sm font-medium text-cu-red`,
 };

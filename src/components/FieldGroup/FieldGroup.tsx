@@ -1,7 +1,7 @@
 import React from "react";
 import { labelStyles } from "../../styles/styles";
 
-export interface FieldGroupProps {
+interface FieldGroupProps {
   children: React.ReactNode;
   id: string;
   legend?: string;

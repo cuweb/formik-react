@@ -6,7 +6,7 @@ import {
 } from "../../styles/styles";
 import { maxWidthClass } from "../../styles/optionClasses";
 
-export interface SelectProps {
+interface SelectProps {
   name: string;
   label: string;
   maxWidth?: "xl" | "lg" | "md" | "sm";

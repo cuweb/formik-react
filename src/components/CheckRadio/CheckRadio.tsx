@@ -1,6 +1,6 @@
 import { Field } from "formik";
 
-export interface CheckRadioProps {
+interface CheckRadioProps {
   value: string;
   type: "checkbox" | "radio";
 }
