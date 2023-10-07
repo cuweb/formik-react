@@ -2,14 +2,17 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FieldWrapper } from "./components/FieldWrapper/FieldWrapper";
 import { Input } from "./components/Input/Input";
+import { TextArea } from "./components/TextArea/TextArea";
 
-// import InputBlocks from "./blocks/InputBlocks";
+import InputBlocks from "./blocks/InputBlocks";
+import TextAreaBlocks from "./blocks/TextAreaBlocks";
 
 const MainForm = () => {
   const formikProps = {
-    initialValues: { "input-field-test": "" },
+    initialValues: { "input-field-test": "", "textarea-test": "" },
     validationSchema: Yup.object({
       "input-field-test": Yup.string().required("Sorry this is required"),
+      "textarea-test": Yup.string().required("Sorry this is required"),
     }),
     onSubmit: (values: { "input-field-test": string }) => {
       console.log(values);
@@ -27,11 +30,22 @@ const MainForm = () => {
                 name="input-field-test"
                 type="text"
                 placeholder="Testing an input field"
+                required
+              />
+            </FieldWrapper>
+
+            <FieldWrapper>
+              <TextArea
+                label="TextArea Example"
+                name="textarea-test"
+                placeholder="Text area input"
+                required
               />
             </FieldWrapper>
 
             {/* Testing a variety of input field configurations */}
-            {/* <InputBlocks /> */}
+            {/* <InputBlocks />
+            <TextAreaBlocks /> */}
 
             <div>
               <button

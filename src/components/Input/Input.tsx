@@ -1,19 +1,14 @@
 import { Field, ErrorMessage } from "formik";
 import { maxWidthClass, colSpanClass } from "../../styles/optionClasses";
+import { sharedInputProps } from "../../interface/sharedProps";
 import {
   labelStyles,
   fieldStyles,
   fieldErrorStyles,
 } from "../../styles/styles";
 
-interface InputProps {
-  label: string;
-  name: string;
-  placeholder?: string;
-  maxWidth?: "xl" | "lg" | "md" | "sm";
-  colSpan?: "1" | "2" | "3" | "4";
+interface InputProps extends sharedInputProps {
   type: "text" | "email" | "number" | "password";
-  required?: boolean;
 }
 
 export const Input = ({
@@ -23,14 +18,14 @@ export const Input = ({
   placeholder,
   maxWidth = "xl",
   colSpan = "1",
-  ...props
+  required,
 }: InputProps) => {
   return (
     <div
       className={`flex flex-col w-full gap-2 ${maxWidthClass[maxWidth]} ${colSpanClass[colSpan]}`}
     >
       <label htmlFor={name} className={labelStyles.label}>
-        {label}
+        {label} {required && <span className="text-cu-red">*</span>}
       </label>
       <Field
         type={type}
@@ -38,7 +33,6 @@ export const Input = ({
         name={name}
         placeholder={placeholder}
         className={fieldStyles.input}
-        {...props}
       />
       <ErrorMessage
         name={name}
