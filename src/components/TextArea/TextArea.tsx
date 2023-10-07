@@ -14,6 +14,7 @@ interface TextAreaProps extends sharedInputProps {
 export const TextArea = ({
   label,
   name,
+  placeholder,
   maxWidth = "xl",
   colSpan = "1",
   required,
@@ -31,6 +32,7 @@ export const TextArea = ({
         id={name}
         name={name}
         rows={rows}
+        placeholder={placeholder}
         className={fieldStyles.input}
       />
       <ErrorMessage

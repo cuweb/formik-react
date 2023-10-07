@@ -1,22 +1,26 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { FieldWrapper } from "./components/FieldWrapper/FieldWrapper";
-import { Input } from "./components/Input/Input";
-import { TextArea } from "./components/TextArea/TextArea";
 
 import InputBlocks from "./blocks/InputBlocks";
 import TextAreaBlocks from "./blocks/TextAreaBlocks";
 import CheckboxBlocks from "./blocks/CheckboxBlocks";
 import RadioBlocks from "./blocks/RadioBlocks";
+import SelectBlocks from "./blocks/SelectBlocks";
+
+import { FieldWrapper } from "./components/FieldWrapper/FieldWrapper";
+import { Select } from "./components/Select/Select";
+import { selectData } from "./data/data";
 
 const MainForm = () => {
   const formikProps = {
-    initialValues: { "input-field-test": "", "textarea-test": "" },
+    initialValues: { "input-test-1": "", "textarea-test-1": "" },
     validationSchema: Yup.object({
-      "input-field-test": Yup.string().required("Sorry this is required"),
-      "textarea-test": Yup.string().required("Sorry this is required"),
+      "input-test-1": Yup.string().required("This is a required input field"),
+      "textarea-test-1": Yup.string().required(
+        "This textarea field is required"
+      ),
     }),
-    onSubmit: (values: { "input-field-test": string }) => {
+    onSubmit: (values: { "input-test-1": string }) => {
       console.log(values);
     },
   };
@@ -26,40 +30,33 @@ const MainForm = () => {
       {(formik) => (
         <Form>
           <div className="flex flex-col gap-10 p-12 mx-auto max-w-7xl">
-            {/* <FieldWrapper hasColumns>
-              <Input
-                label="Input Field"
-                name="input-field-test"
-                type="text"
-                placeholder="Testing an input field"
-                required
+            {/* <InputBlocks /> */}
+            {/* <TextAreaBlocks /> */}
+            {/* <CheckboxBlocks /> */}
+            {/* <RadioBlocks /> */}
+            {/* <SelectBlocks /> */}
+
+            <FieldWrapper>
+              <Select
+                name="selectInput1a"
+                label="Select Example"
+                options={selectData}
+                // onChange={(event) => {
+                //   setFieldValue("selectInput", event.target.value);
+                //   if (event.target.value === "option1") {
+                //     setFieldValue("autoSelect", "option5");
+                //   }
+                // }}
               />
-            </FieldWrapper> */}
+            </FieldWrapper>
 
-            {/* <FieldWrapper>
-              <TextArea
-                label="TextArea Example"
-                name="textarea-test"
-                placeholder="Text area input"
-                required
-              />
-            </FieldWrapper> */}
-
-            {/* Testing a variety of input field configurations */}
-            <InputBlocks />
-            <TextAreaBlocks />
-            <CheckboxBlocks />
-            <RadioBlocks />
-
-            <div>
-              <button
-                type="submit"
-                aria-label="Submit"
-                className="inline-flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium text-white rounded-md cu-button not-prose md:px-6 md:py-3 md:text-base hover:text-white focus:outline-none bg-cu-red hover:bg-cu-black-600"
-              >
-                Submit
-              </button>
-            </div>
+            <button
+              type="submit"
+              aria-label="Submit"
+              className="inline-flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium text-white rounded-md cu-button not-prose md:px-6 md:py-3 md:text-base hover:text-white focus:outline-none bg-cu-red hover:bg-cu-black-600"
+            >
+              Submit
+            </button>
           </div>
         </Form>
       )}

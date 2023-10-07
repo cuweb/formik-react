@@ -14,8 +14,13 @@ export const CheckRadioOption = ({
 }: CheckRadioOptionProps) => {
   return (
     <>
-      <label className="flex items-center gap-2">
-        <Field type={type} name={name} value={stringToDashed(label)} />
+      <label className="flex items-start gap-2">
+        <Field
+          type={type}
+          name={name}
+          value={stringToDashed(label)}
+          className="mt-1"
+        />
         {label} {required && <span className="text-cu-red">*</span>}
       </label>
     </>

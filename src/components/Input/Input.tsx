@@ -13,12 +13,12 @@ interface InputProps extends sharedInputProps {
 
 export const Input = ({
   label,
-  type,
   name,
   placeholder,
   maxWidth = "xl",
   colSpan = "1",
   required,
+  type,
 }: InputProps) => {
   return (
     <div

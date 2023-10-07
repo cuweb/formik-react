@@ -8,9 +8,10 @@ const TextAreaBlocks = () => {
       <FieldWrapper>
         <TextArea
           label="TextArea Example"
-          name="textArea1"
+          name="textarea-test-1"
           placeholder="Text area input"
           maxWidth="xl"
+          required
         />
       </FieldWrapper>
 
@@ -18,7 +19,7 @@ const TextAreaBlocks = () => {
       <FieldWrapper>
         <TextArea
           label="TextArea Example"
-          name="textArea2"
+          name="textarea-test-2"
           placeholder="Text area input"
           maxWidth="lg"
         />
@@ -28,7 +29,7 @@ const TextAreaBlocks = () => {
       <FieldWrapper>
         <TextArea
           label="TextArea Example"
-          name="textArea3"
+          name="textarea-test-3"
           placeholder="Text area input"
           maxWidth="md"
           rows={5}
@@ -39,7 +40,7 @@ const TextAreaBlocks = () => {
       <FieldWrapper>
         <TextArea
           label="TextArea Example"
-          name="textArea4"
+          name="textarea-test-4"
           placeholder="Text area input"
           maxWidth="sm"
           rows={5}
@@ -50,35 +51,13 @@ const TextAreaBlocks = () => {
       <FieldWrapper hasColumns>
         <TextArea
           label="TextArea Example"
-          name="textArea5"
+          name="textarea-test-5"
           placeholder="Text area input"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea6"
-          placeholder="Text area input"
-          rows={5}
-        />
-      </FieldWrapper>
-
-      {/* Text Area */}
-      <FieldWrapper hasColumns>
-        <TextArea
-          label="TextArea Example"
-          name="textArea7"
-          placeholder="Text area input"
-          rows={5}
-        />
-        <TextArea
-          label="TextArea Example"
-          name="textArea8"
-          placeholder="Text area input"
-          rows={5}
-        />
-        <TextArea
-          label="TextArea Example"
-          name="textArea9"
+          name="textarea-test-6"
           placeholder="Text area input"
           rows={5}
         />
@@ -88,25 +67,47 @@ const TextAreaBlocks = () => {
       <FieldWrapper hasColumns>
         <TextArea
           label="TextArea Example"
-          name="textArea10"
+          name="textarea-test-7"
           placeholder="Text area input"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea11"
+          name="textarea-test-8"
           placeholder="Text area input"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea12"
+          name="textarea-test-9"
+          placeholder="Text area input"
+          rows={5}
+        />
+      </FieldWrapper>
+
+      {/* Text Area */}
+      <FieldWrapper hasColumns>
+        <TextArea
+          label="TextArea Example"
+          name="textarea-test-10"
           placeholder="Text area input"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea13"
+          name="textarea-test-11"
+          placeholder="Text area input"
+          rows={5}
+        />
+        <TextArea
+          label="TextArea Example"
+          name="textarea-test-12"
+          placeholder="Text area input"
+          rows={5}
+        />
+        <TextArea
+          label="TextArea Example"
+          name="textarea-test-13"
           placeholder="Text area input"
           rows={5}
         />
@@ -116,20 +117,20 @@ const TextAreaBlocks = () => {
       <FieldWrapper cols="4">
         <TextArea
           label="TextArea Example"
-          name="textArea10"
+          name="textarea-test-10"
           placeholder="Text area input"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea12"
+          name="textarea-test-12"
           placeholder="Text area input"
           colSpan="2"
           rows={5}
         />
         <TextArea
           label="TextArea Example"
-          name="textArea13"
+          name="textarea-test-13"
           placeholder="Text area input"
           rows={5}
         />

@@ -7,28 +7,29 @@ const InputBlocks = () => {
       <FieldWrapper>
         <Input
           type="text"
-          name="testingText1"
+          name="input-test-1"
           label="Input Field"
           maxWidth="xl"
           placeholder="Input at extra large width"
+          required
         />
         <Input
           type="text"
-          name="testingText2"
+          name="input-test-2"
           label="Input Field"
           maxWidth="lg"
           placeholder="Input at large width width"
         />
         <Input
           type="text"
-          name="testingText3"
+          name="input-test-3"
           label="Input Field"
           maxWidth="md"
           placeholder="Input at medium width width"
         />
         <Input
           type="text"
-          name="testingText4"
+          name="input-test-4"
           label="Input Field"
           maxWidth="sm"
           placeholder="Input at small width width"
@@ -39,35 +40,13 @@ const InputBlocks = () => {
       <FieldWrapper hasColumns>
         <Input
           type="text"
-          name="testingText5"
+          name="input-test-5"
           label="Input Field"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText6"
-          label="Input Field"
-          placeholder="Two column layout"
-        />
-      </FieldWrapper>
-
-      {/* Multiple Text Input */}
-      <FieldWrapper hasColumns>
-        <Input
-          type="text"
-          name="testingText7"
-          label="Input Field"
-          placeholder="Two column layout"
-        />
-        <Input
-          type="text"
-          name="testingText8"
-          label="Input Field"
-          placeholder="Two column layout"
-        />
-        <Input
-          type="text"
-          name="testingText9"
+          name="input-test-6"
           label="Input Field"
           placeholder="Two column layout"
         />
@@ -77,25 +56,47 @@ const InputBlocks = () => {
       <FieldWrapper hasColumns>
         <Input
           type="text"
-          name="testingText10"
+          name="input-test-7"
           label="Input Field"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText11"
+          name="input-test-8"
           label="Input Field"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText12"
+          name="input-test-9"
+          label="Input Field"
+          placeholder="Two column layout"
+        />
+      </FieldWrapper>
+
+      {/* Multiple Text Input */}
+      <FieldWrapper hasColumns>
+        <Input
+          type="text"
+          name="input-test-10"
           label="Input Field"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText13"
+          name="input-test-11"
+          label="Input Field"
+          placeholder="Two column layout"
+        />
+        <Input
+          type="text"
+          name="input-test-12"
+          label="Input Field"
+          placeholder="Two column layout"
+        />
+        <Input
+          type="text"
+          name="input-test-13"
           label="Input Field"
           placeholder="Two column layout"
         />
@@ -105,20 +106,20 @@ const InputBlocks = () => {
       <FieldWrapper cols="4">
         <Input
           type="text"
-          name="testingText14"
+          name="input-test-14"
           label="Input Field"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText15"
+          name="input-test-15"
           label="Input Field"
           colSpan="2"
           placeholder="Two column layout"
         />
         <Input
           type="text"
-          name="testingText16"
+          name="input-test-16"
           label="Input Field"
           placeholder="Two column layout"
         />
